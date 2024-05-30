@@ -1,0 +1,205 @@
+    ---
+
+  apiVersion: &quot;apps/v1&quot;
+  kind: &quot;Deployment&quot;
+  metadata: 
+    name: &quot;order&quot;
+    labels: 
+      app: &quot;order&quot;
+    annotations: 
+      msaez.io/x: &quot;151&quot;
+  spec: 
+    selector: 
+      matchLabels: 
+        app: &quot;order&quot;
+    replicas: 1
+    template: 
+      metadata: 
+        labels: 
+          app: &quot;order&quot;
+      spec: 
+        containers: 
+          - 
+            name: &quot;order&quot;
+            image: &quot;ghcr.io/undefined&quot;
+            ports: 
+              - 
+                containerPort: 8080
+            readinessProbe: 
+              httpGet: 
+                path: &quot;/actuator/health&quot;
+                port: 8080
+              initialDelaySeconds: 10
+              timeoutSeconds: 2
+              periodSeconds: 5
+              failureThreshold: 10
+            livenessProbe: 
+              httpGet: 
+                path: &quot;/actuator/health&quot;
+                port: 8080
+              initialDelaySeconds: 120
+              timeoutSeconds: 2
+              periodSeconds: 5
+              failureThreshold: 5
+
+
+---
+
+    ---
+
+  apiVersion: &quot;v1&quot;
+  kind: &quot;Service&quot;
+  metadata: 
+    name: &quot;order&quot;
+    labels: 
+      app: &quot;order&quot;
+    annotations: 
+      msaez.io/x: &quot;151&quot;
+  spec: 
+    ports: 
+      - 
+        port: 8080
+        targetPort: 8080
+    selector: 
+      app: &quot;order&quot;
+
+
+---
+
+    ---
+
+  apiVersion: &quot;apps/v1&quot;
+  kind: &quot;Deployment&quot;
+  metadata: 
+    name: &quot;inventory&quot;
+    labels: 
+      app: &quot;inventory&quot;
+    annotations: 
+      msaez.io/x: &quot;351&quot;
+  spec: 
+    selector: 
+      matchLabels: 
+        app: &quot;inventory&quot;
+    replicas: 1
+    template: 
+      metadata: 
+        labels: 
+          app: &quot;inventory&quot;
+      spec: 
+        containers: 
+          - 
+            name: &quot;inventory&quot;
+            image: &quot;ghcr.io/undefined&quot;
+            ports: 
+              - 
+                containerPort: 8080
+            readinessProbe: 
+              httpGet: 
+                path: &quot;/actuator/health&quot;
+                port: 8080
+              initialDelaySeconds: 10
+              timeoutSeconds: 2
+              periodSeconds: 5
+              failureThreshold: 10
+            livenessProbe: 
+              httpGet: 
+                path: &quot;/actuator/health&quot;
+                port: 8080
+              initialDelaySeconds: 120
+              timeoutSeconds: 2
+              periodSeconds: 5
+              failureThreshold: 5
+
+
+---
+
+    ---
+
+  apiVersion: &quot;v1&quot;
+  kind: &quot;Service&quot;
+  metadata: 
+    name: &quot;inventory&quot;
+    labels: 
+      app: &quot;inventory&quot;
+    annotations: 
+      msaez.io/x: &quot;351&quot;
+  spec: 
+    ports: 
+      - 
+        port: 8080
+        targetPort: 8080
+    selector: 
+      app: &quot;inventory&quot;
+
+
+---
+
+    ---
+
+  apiVersion: &quot;apps/v1&quot;
+  kind: &quot;Deployment&quot;
+  metadata: 
+    name: &quot;delivery&quot;
+    labels: 
+      app: &quot;delivery&quot;
+    annotations: 
+      msaez.io/x: &quot;551&quot;
+  spec: 
+    selector: 
+      matchLabels: 
+        app: &quot;delivery&quot;
+    replicas: 1
+    template: 
+      metadata: 
+        labels: 
+          app: &quot;delivery&quot;
+      spec: 
+        containers: 
+          - 
+            name: &quot;delivery&quot;
+            image: &quot;ghcr.io/undefined&quot;
+            ports: 
+              - 
+                containerPort: 8080
+            readinessProbe: 
+              httpGet: 
+                path: &quot;/actuator/health&quot;
+                port: 8080
+              initialDelaySeconds: 10
+              timeoutSeconds: 2
+              periodSeconds: 5
+              failureThreshold: 10
+            livenessProbe: 
+              httpGet: 
+                path: &quot;/actuator/health&quot;
+                port: 8080
+              initialDelaySeconds: 120
+              timeoutSeconds: 2
+              periodSeconds: 5
+              failureThreshold: 5
+
+
+---
+
+    ---
+
+  apiVersion: &quot;v1&quot;
+  kind: &quot;Service&quot;
+  metadata: 
+    name: &quot;delivery&quot;
+    labels: 
+      app: &quot;delivery&quot;
+    annotations: 
+      msaez.io/x: &quot;551&quot;
+  spec: 
+    ports: 
+      - 
+        port: 8080
+        targetPort: 8080
+    selector: 
+      app: &quot;delivery&quot;
+
+
+---
+
+

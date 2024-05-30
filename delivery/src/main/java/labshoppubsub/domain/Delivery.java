@@ -40,5 +40,34 @@ public class Delivery {
         );
         return deliveryRepository;
     }
+
+    //<<< Clean Arch / Port Method
+    public static void addDelivery(OrderPlaced orderPlaced) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Delivery delivery = new Delivery();
+        repository().save(delivery);
+
+        DeliveryAdded deliveryAdded = new DeliveryAdded(delivery);
+        deliveryAdded.publishAfterCommit();
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(orderPlaced.get???()).ifPresent(delivery->{
+            
+            delivery // do something
+            repository().save(delivery);
+
+            DeliveryAdded deliveryAdded = new DeliveryAdded(delivery);
+            deliveryAdded.publishAfterCommit();
+
+         });
+        */
+
+    }
+    //>>> Clean Arch / Port Method
+
 }
 //>>> DDD / Aggregate Root
